@@ -16,7 +16,7 @@ double nice(double x, bool round) {
   double f;
   double nicef;
 
-  exp = std::floor(std::log10(x));
+  exp = static_cast<int>(std::floor(std::log10(x)));
   f = x / std::pow(10., exp);
 
   if (round) {
@@ -92,7 +92,8 @@ void QniteLinearTicker::buildTicks() {
   // build min ticks
   QList<qreal> mins;
   for (int i = 0; i < majors.size() - 1; i++) {
-    fill(mins, majors[i], majors[i + 1], std::ceil(numSteps() / 2.));
+    fill(mins, majors[i], majors[i + 1],
+         static_cast<int>(std::ceil(numSteps() / 2.)));
   }
 
   // remove duplicates

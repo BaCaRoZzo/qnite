@@ -40,7 +40,7 @@ void QniteCirclePainter::paint(QNanoPainter *painter) {
 
   painter->setStrokeStyle(QNanoColor::fromQColor(m_pen.stroke));
   painter->setFillStyle(QNanoColor::fromQColor(m_pen.fill));
-  painter->setLineWidth(m_pen.width);
+  painter->setLineWidth(static_cast<float>(m_pen.width));
   painter->setLineJoin(m_pen.join);
   painter->setLineCap(m_pen.cap);
 
@@ -51,7 +51,9 @@ void QniteCirclePainter::paint(QNanoPainter *painter) {
       continue;
     }
     painter->beginPath();
-    painter->circle(m_xs.at(i), m_ys.at(i), m_pen.radius);
+    painter->circle(static_cast<float>(m_xs.at(i)),
+                    static_cast<float>(m_ys.at(i)),
+                    static_cast<float>(m_pen.radius));
     painter->fill();
     painter->stroke();
   }
@@ -60,7 +62,7 @@ void QniteCirclePainter::paint(QNanoPainter *painter) {
   if (m_selectedPoints.size() > 0) {
     painter->setStrokeStyle(QNanoColor::fromQColor(m_selectedPen.stroke));
     painter->setFillStyle(QNanoColor::fromQColor(m_selectedPen.fill));
-    painter->setLineWidth(m_selectedPen.width);
+    painter->setLineWidth(static_cast<float>(m_selectedPen.width));
     painter->setLineJoin(m_selectedPen.join);
     painter->setLineCap(m_selectedPen.cap);
 
@@ -71,7 +73,9 @@ void QniteCirclePainter::paint(QNanoPainter *painter) {
       }
 
       painter->beginPath();
-      painter->circle(m_xs.at(i), m_ys.at(i), m_selectedPen.radius);
+      painter->circle(static_cast<float>(m_xs.at(i)),
+                      static_cast<float>(m_ys.at(i)),
+                      static_cast<float>(m_selectedPen.radius));
       painter->fill();
       painter->stroke();
     }
@@ -81,13 +85,14 @@ void QniteCirclePainter::paint(QNanoPainter *painter) {
   if (m_highlightedPoint > -1) {
     painter->setStrokeStyle(QNanoColor::fromQColor(m_highlightedPen.stroke));
     painter->setFillStyle(QNanoColor::fromQColor(m_highlightedPen.fill));
-    painter->setLineWidth(m_highlightedPen.width);
+    painter->setLineWidth(static_cast<float>(m_highlightedPen.width));
     painter->setLineJoin(m_highlightedPen.join);
     painter->setLineCap(m_highlightedPen.cap);
 
     painter->beginPath();
-    painter->circle(m_xs.at(m_highlightedPoint), m_ys.at(m_highlightedPoint),
-                    m_highlightedPen.radius);
+    painter->circle(static_cast<float>(m_xs.at(m_highlightedPoint)),
+                    static_cast<float>(m_ys.at(m_highlightedPoint)),
+                    static_cast<float>(m_highlightedPen.radius));
     painter->fill();
     painter->stroke();
   }

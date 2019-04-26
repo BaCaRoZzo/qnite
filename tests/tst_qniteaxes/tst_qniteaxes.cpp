@@ -15,7 +15,7 @@ public Q_SLOTS:
 public:
   bool sel;
 
-  FooArtist(QQuickItem *p = 0) : QniteArtist(p), sel(false) {}
+  FooArtist(QQuickItem *p = Q_NULLPTR) : QniteArtist(p), sel(false) {}
   void clearSelection() { sel = false; }
   bool isSelected() const { return sel; }
 };
@@ -27,7 +27,7 @@ public Q_SLOTS:
   void processData() {}
 
 public:
-  FooAxis(QQuickItem *p = 0) : QniteAxis(p) {}
+  FooAxis(QQuickItem *p = Q_NULLPTR) : QniteAxis(p) {}
 };
 
 class TestQniteAxes : public QObject {

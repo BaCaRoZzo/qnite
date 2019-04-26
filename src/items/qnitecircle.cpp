@@ -41,7 +41,8 @@ bool QniteCircle::select(const QList<QPoint> &path) {
   m_selectedPoints.clear();
   auto dataSize = xMapped().size();
   for (auto i = 0; i < dataSize; ++i) {
-    QPoint cp(xMapped().at(i), yMapped().at(i));
+    QPoint cp(static_cast<int>(xMapped().at(i)),
+              static_cast<int>(yMapped().at(i)));
 
     if (polygonPath.containsPoint(cp, Qt::OddEvenFill)) {
       m_selectedPoints.insert(i);
@@ -68,7 +69,8 @@ bool QniteCircle::select(const QPoint p) {
 
   auto dataSize = xMapped().size();
   for (auto i = 0; i < dataSize; ++i) {
-    QPoint cp(xMapped().at(i), yMapped().at(i));
+    QPoint cp(static_cast<int>(xMapped().at(i)),
+              static_cast<int>(yMapped().at(i)));
     QPoint d = p - cp;
 
     auto distance = d.manhattanLength();

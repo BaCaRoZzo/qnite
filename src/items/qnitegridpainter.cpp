@@ -35,7 +35,7 @@ void QniteGridPainter::paint(QNanoPainter *painter) {
 
   painter->setStrokeStyle(QNanoColor::fromQColor(m_pen.stroke));
   painter->setFillStyle(QNanoColor::fromQColor(m_pen.fill));
-  painter->setLineWidth(m_pen.width);
+  painter->setLineWidth(static_cast<float>(m_pen.width));
   painter->setLineJoin(m_pen.join);
   painter->setLineCap(m_pen.cap);
 
@@ -48,8 +48,8 @@ void QniteGridPainter::paint(QNanoPainter *painter) {
   painter->beginPath();
   if (m_drawX) { // draw x axes
     for (auto y : m_ys) {
-      painter->moveTo(0, y);
-      painter->lineTo(m_xsize, y);
+      painter->moveTo(0, static_cast<float>(y));
+      painter->lineTo(static_cast<float>(m_xsize), static_cast<float>(y));
     }
     painter->stroke();
   }
@@ -57,8 +57,8 @@ void QniteGridPainter::paint(QNanoPainter *painter) {
   painter->beginPath();
   if (m_drawY) { // draw y axes
     for (auto x : m_xs) {
-      painter->moveTo(x, 0);
-      painter->lineTo(x, m_ysize);
+      painter->moveTo(static_cast<float>(x), 0);
+      painter->lineTo(static_cast<float>(x), static_cast<float>(m_ysize));
     }
     painter->stroke();
   }

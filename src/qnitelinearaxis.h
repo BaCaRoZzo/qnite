@@ -5,7 +5,7 @@
 
 class QniteLinearAxis : public QniteAxis {
 public:
-  explicit QniteLinearAxis(QQuickItem *parent = 0);
+  explicit QniteLinearAxis(QQuickItem *parent = Q_NULLPTR);
   virtual ~QniteLinearAxis() {}
 
 public Q_SLOTS:

@@ -9,7 +9,7 @@ class QniteCategoryAxis : public QniteAxis {
       QStringList values READ values WRITE setValues NOTIFY valuesChanged)
 
 public:
-  explicit QniteCategoryAxis(QQuickItem *parent = 0);
+  explicit QniteCategoryAxis(QQuickItem *parent = Q_NULLPTR);
   virtual ~QniteCategoryAxis() {}
 
   QStringList values() const { return m_values; }

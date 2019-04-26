@@ -7,7 +7,7 @@ class QnitePointSelectionTool : public QniteSelectionTool {
   Q_OBJECT
 
 public:
-  explicit QnitePointSelectionTool(QQuickItem *parent = 0);
+  explicit QnitePointSelectionTool(QQuickItem *parent = Q_NULLPTR);
   virtual ~QnitePointSelectionTool() {}
 
   void select(const QPoint &point);

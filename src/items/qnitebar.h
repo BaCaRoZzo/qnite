@@ -13,8 +13,8 @@ class QniteBar : public QniteXYArtist {
                  categoriesChanged)
 
 public:
-  explicit QniteBar(QQuickItem *parent = 0);
-  virtual ~QniteBar() {}
+  explicit QniteBar(QQuickItem *parent = Q_NULLPTR);
+  virtual ~QniteBar() Q_DECL_OVERRIDE {}
 
   qreal fixedWidth() const { return m_fixedWidth; }
   void setFixedWidth(qreal w);

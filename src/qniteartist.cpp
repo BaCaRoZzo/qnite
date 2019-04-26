@@ -31,10 +31,10 @@ void QniteArtist::setAxes(QniteAxes *axes) {
 }
 
 void QniteArtist::updateAxes() {
-  disconnect(m_axes, SIGNAL(widthChanged()), this, 0);
-  disconnect(m_axes, SIGNAL(heightChanged()), this, 0);
-  disconnect(m_axes, &QniteAxes::xBoundsChanged, this, 0);
-  disconnect(m_axes, &QniteAxes::yBoundsChanged, this, 0);
+  disconnect(m_axes, SIGNAL(widthChanged()), this, nullptr);
+  disconnect(m_axes, SIGNAL(heightChanged()), this, nullptr);
+  disconnect(m_axes, &QniteAxes::xBoundsChanged, this, nullptr);
+  disconnect(m_axes, &QniteAxes::yBoundsChanged, this, nullptr);
 
   if (m_axes != nullptr) {
     setWidth(m_axes->width());

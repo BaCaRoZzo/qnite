@@ -22,7 +22,7 @@ Q_SIGNALS:
   void tickersBuilt();
 
 public:
-  explicit QniteTicker(QObject *parent = 0);
+  explicit QniteTicker(QObject *parent = Q_NULLPTR);
   virtual ~QniteTicker() {}
 
   virtual void reset();

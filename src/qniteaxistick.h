@@ -13,7 +13,7 @@ class QniteAxisTick : public QObject {
   Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
 
 public:
-  explicit QniteAxisTick(QObject *parent = 0);
+  explicit QniteAxisTick(QObject *parent = Q_NULLPTR);
   virtual ~QniteAxisTick();
 
   qreal thick() const;

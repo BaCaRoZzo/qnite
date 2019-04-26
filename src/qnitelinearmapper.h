@@ -7,7 +7,7 @@ class QniteLinearMapper : public QniteMapper {
   Q_OBJECT
 
 public:
-  explicit QniteLinearMapper(QObject *parent = 0);
+  explicit QniteLinearMapper(QObject *parent = Q_NULLPTR);
   virtual ~QniteLinearMapper();
 
   using QniteMapper::mapTo;

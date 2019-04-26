@@ -91,7 +91,7 @@ void QniteXYArtist::processData() {
   qreal yUpper = axes()->axisY()->upperBound();
 
   // TODO: this should be improved. clipping should be done only when bounds
-  // changes and tranforsm should always be performed
+  // changes and transform should always be performed
   QList<qreal> xClipped;
   QList<qreal> yClipped;
   // clip non visible data
@@ -107,7 +107,7 @@ void QniteXYArtist::processData() {
   m_xMapped = xMapper()->mapTo(xLower, xUpper, 0, width(), xClipped);
   m_yMapped = yMapper()->mapTo(yLower, yUpper, 0, height(), yClipped, true);
 
-  // TODO: this is ugly and inefficient. move into a pipelino or something
+  // TODO: this is ugly and inefficient; move into a pipeline or something
   // similar move to the output area
   m_xProcessed = m_xMapped;
   m_yProcessed = m_yMapped;
