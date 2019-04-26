@@ -7,7 +7,7 @@ class FooTicker : public QniteTicker {
   Q_OBJECT
 
 public:
-  FooTicker(QObject *p = 0) : QniteTicker(p) {}
+  FooTicker(QObject *p = Q_NULLPTR) : QniteTicker(p) {}
   void buildTicks() {
     QList<qreal> t;
     for (int i = 0; i < numSteps(); ++i) {

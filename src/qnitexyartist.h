@@ -13,8 +13,8 @@ class QniteXYArtist : public QniteArtist {
       QList<qreal> yValues READ yValues WRITE setYValues NOTIFY yValuesChanged)
 
 public:
-  explicit QniteXYArtist(QQuickItem *parent = 0);
-  virtual ~QniteXYArtist();
+  explicit QniteXYArtist(QQuickItem *parent = Q_NULLPTR);
+  virtual ~QniteXYArtist() Q_DECL_OVERRIDE;
 
   const QList<qreal> &xValues();
   void setXValues(const QList<qreal> &values);

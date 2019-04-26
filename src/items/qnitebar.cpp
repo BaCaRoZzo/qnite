@@ -10,7 +10,7 @@ QniteBar::QniteBar(QQuickItem *parent)
     : QniteXYArtist(parent), m_fixedWidth{10}, m_selectedIndex{-1} {}
 
 void QniteBar::setFixedWidth(qreal w) {
-  if (m_fixedWidth != w) {
+  if (!qFuzzyCompare(m_fixedWidth, w)) {
     m_fixedWidth = w;
     emit fixedWidthChanged();
 

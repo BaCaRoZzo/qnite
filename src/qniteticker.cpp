@@ -62,12 +62,12 @@ void QniteTicker::setNumSteps(int steps) {
 void QniteTicker::setBoundaries(qreal lower, qreal upper) {
   bool modified = false;
 
-  if (m_lowerBound != lower) {
+  if (!qFuzzyCompare(m_lowerBound, lower)) {
     m_lowerBound = lower;
     modified = true;
   }
 
-  if (m_upperBound != upper) {
+  if (!qFuzzyCompare(m_upperBound, upper)) {
     m_upperBound = upper;
     modified = true;
   }

@@ -6,7 +6,7 @@
 class QniteMapper : public QObject {
   Q_OBJECT
 public:
-  explicit QniteMapper(QObject *parent = 0);
+  explicit QniteMapper(QObject *parent = Q_NULLPTR);
   virtual ~QniteMapper();
 
   virtual QList<qreal> mapTo(qreal sourceLower, qreal sourceUpper,

@@ -8,7 +8,7 @@ class QniteSelectionTool : public QniteTool {
   Q_OBJECT
 
 public:
-  explicit QniteSelectionTool(QQuickItem *parent = 0);
+  explicit QniteSelectionTool(QQuickItem *parent = Q_NULLPTR);
   virtual ~QniteSelectionTool() {}
   Q_INVOKABLE void reset();
 

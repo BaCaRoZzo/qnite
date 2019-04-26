@@ -11,8 +11,8 @@ class QniteTool : public QNanoQuickItem {
                  axesChanged) // TODO: axes needs to be a property?
 
 public:
-  explicit QniteTool(QQuickItem *parent = 0);
-  virtual ~QniteTool() {}
+  explicit QniteTool(QQuickItem *parent = Q_NULLPTR);
+  virtual ~QniteTool() Q_DECL_OVERRIDE {}
 
   QniteAxes *axes() const { return m_axes; }
   void setAxes(QniteAxes *axes);

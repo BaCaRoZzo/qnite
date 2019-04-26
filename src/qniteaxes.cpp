@@ -49,7 +49,8 @@ void QniteAxes::setXBounds(const QList<qreal> &bounds) {
   auto lowerBound = bounds.at(0);
   auto upperBound = bounds.at(1);
 
-  if (lowerBound != m_lowerXBound || upperBound != m_upperXBound) {
+  if (!qFuzzyCompare(lowerBound, m_lowerXBound) ||
+      !qFuzzyCompare(upperBound, m_upperXBound)) {
     m_lowerXBound = lowerBound;
     m_upperXBound = upperBound;
     emit xBoundsChanged();
@@ -59,7 +60,7 @@ void QniteAxes::setXBounds(const QList<qreal> &bounds) {
 }
 
 void QniteAxes::setXPadding(qreal padding) {
-  if (m_xPadding != padding) {
+  if (!qFuzzyCompare(m_xPadding, padding)) {
     m_xPadding = padding;
 
     emit xPaddingChanged();
@@ -80,7 +81,8 @@ void QniteAxes::setYBounds(const QList<qreal> &bounds) {
   auto lowerBound = bounds.at(0);
   auto upperBound = bounds.at(1);
 
-  if (lowerBound != m_lowerYBound || upperBound != m_upperYBound) {
+  if (!qFuzzyCompare(lowerBound, m_lowerYBound) ||
+      !qFuzzyCompare(upperBound, m_upperYBound)) {
     m_lowerYBound = lowerBound;
     m_upperYBound = upperBound;
     emit yBoundsChanged();
@@ -90,7 +92,7 @@ void QniteAxes::setYBounds(const QList<qreal> &bounds) {
 }
 
 void QniteAxes::setYPadding(qreal padding) {
-  if (m_yPadding != padding) {
+  if (!qFuzzyCompare(m_yPadding, padding)) {
     m_yPadding = padding;
 
     emit yPaddingChanged();

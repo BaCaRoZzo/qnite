@@ -27,7 +27,7 @@ class QniteAxes : public QQuickItem {
   Q_PROPERTY(QniteAxis *axisX READ axisX WRITE setAxisX NOTIFY axisXChanged)
 
 public:
-  explicit QniteAxes(QQuickItem *parent = 0);
+  explicit QniteAxes(QQuickItem *parent = Q_NULLPTR);
   virtual ~QniteAxes() {}
 
   Q_INVOKABLE void appendArtist(QniteArtist *artist);

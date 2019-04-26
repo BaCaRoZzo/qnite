@@ -19,7 +19,7 @@ class QniteArtist : public QNanoQuickItem {
 
 public:
   explicit QniteArtist(QQuickItem *parent = Q_NULLPTR);
-  virtual ~QniteArtist();
+  virtual ~QniteArtist() Q_DECL_OVERRIDE;
 
   QniteAxes *axes() const;
   bool selectable() const { return m_selectable; }

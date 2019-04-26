@@ -57,32 +57,32 @@ void QniteLinePainter::paint(QNanoPainter *painter) {
   if (pen.fill.isValid()) {
     painter->setFillStyle(QNanoColor::fromQColor(pen.fill));
   }
-  painter->setLineWidth(pen.width);
+  painter->setLineWidth(static_cast<float>(pen.width));
   painter->setLineJoin(pen.join);
   painter->setLineCap(pen.cap);
 
   // first we draw the fill when a valid fill color is available
   if (pen.fill.isValid()) {
     painter->beginPath();
-    painter->moveTo(m_xs.at(0), m_baseline);
-    painter->lineTo(m_xs.at(0), m_ys.at(0));
+    painter->moveTo(float(m_xs.at(0)), float(m_baseline));
+    painter->lineTo(float(m_xs.at(0)), float(m_ys.at(0)));
     for (auto i = 1; i < dataSize; ++i) {
       if (m_drawStepped) {
-        painter->lineTo(m_xs.at(i), m_ys.at(i - 1));
+        painter->lineTo(float(m_xs.at(i)), float(m_ys.at(i - 1)));
       }
-      painter->lineTo(m_xs.at(i), m_ys.at(i));
+      painter->lineTo(float(m_xs.at(i)), float(m_ys.at(i)));
     }
-    painter->lineTo(m_xs.at(dataSize - 1), m_baseline);
+    painter->lineTo(float(m_xs.at(dataSize - 1)), float(m_baseline));
     painter->fill();
   }
 
   painter->beginPath();
-  painter->moveTo(m_xs.at(0), m_ys.at(0));
+  painter->moveTo(float(m_xs.at(0)), float(m_ys.at(0)));
   for (auto i = 1; i < dataSize; ++i) {
     if (m_drawStepped) {
-      painter->lineTo(m_xs.at(i), m_ys.at(i - 1));
+      painter->lineTo(float(m_xs.at(i)), float(m_ys.at(i - 1)));
     }
-    painter->lineTo(m_xs.at(i), m_ys.at(i));
+    painter->lineTo(float(m_xs.at(i)), float(m_ys.at(i)));
   }
   painter->stroke();
 
@@ -98,7 +98,8 @@ void QniteLinePainter::paint(QNanoPainter *painter) {
     dataSize = m_mappedXs.size();
     for (auto i = 0; i < dataSize; ++i) {
       painter->beginPath();
-      painter->circle(m_mappedXs.at(i), m_mappedYs.at(i), pen.width * 2.5);
+      painter->circle(float(m_mappedXs.at(i)), float(m_mappedYs.at(i)),
+                      float(pen.width * 2.5));
       painter->fill();
       painter->stroke();
     }

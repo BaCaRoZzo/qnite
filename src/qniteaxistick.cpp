@@ -10,7 +10,7 @@ QniteAxisTick::~QniteAxisTick() {}
 qreal QniteAxisTick::thick() const { return m_thick; }
 
 void QniteAxisTick::setThick(qreal thick) {
-  if (m_thick != thick) {
+  if (!qFuzzyCompare(m_thick, thick)) {
     m_thick = thick;
     emit thickChanged();
   }
@@ -19,7 +19,7 @@ void QniteAxisTick::setThick(qreal thick) {
 qreal QniteAxisTick::majSize() const { return m_majSize; }
 
 void QniteAxisTick::setMajSize(qreal size) {
-  if (m_majSize != size) {
+  if (!qFuzzyCompare(m_majSize, size)) {
     m_majSize = size;
     emit majSizeChanged();
   }
@@ -28,7 +28,7 @@ void QniteAxisTick::setMajSize(qreal size) {
 qreal QniteAxisTick::minSize() const { return m_minSize; }
 
 void QniteAxisTick::setMinSize(qreal size) {
-  if (m_minSize != size) {
+  if (!qFuzzyCompare(m_minSize, size)) {
     m_minSize = size;
     emit minSizeChanged();
   }

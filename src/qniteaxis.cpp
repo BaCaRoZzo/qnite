@@ -7,7 +7,7 @@ QniteAxis::QniteAxis(QQuickItem *parent)
       m_flip{false}, m_position{0}, m_mapper{nullptr}, m_ticker{nullptr} {}
 
 void QniteAxis::setSize(qreal size) {
-  if (m_size != size) {
+  if (!qFuzzyCompare(m_size, size)) {
     m_size = size;
     emit sizeChanged();
 
@@ -16,7 +16,7 @@ void QniteAxis::setSize(qreal size) {
 }
 
 void QniteAxis::setLowerBound(qreal bound) {
-  if (m_lowerBound != bound) {
+  if (!qFuzzyCompare(m_lowerBound, bound)) {
     m_lowerBound = bound;
     emit lowerBoundChanged();
 
@@ -25,7 +25,7 @@ void QniteAxis::setLowerBound(qreal bound) {
 }
 
 void QniteAxis::setUpperBound(qreal bound) {
-  if (m_upperBound != bound) {
+  if (!qFuzzyCompare(m_upperBound, bound)) {
     m_upperBound = bound;
     emit upperBoundChanged();
 

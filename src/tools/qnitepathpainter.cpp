@@ -31,7 +31,7 @@ void QnitePathPainter::paint(QNanoPainter *painter) {
   if (m_pen.fill.isValid()) {
     painter->setFillStyle(QNanoColor::fromQColor(m_pen.fill));
   }
-  painter->setLineWidth(m_pen.width);
+  painter->setLineWidth(static_cast<float>(m_pen.width));
   painter->setLineJoin(m_pen.join);
   painter->setLineCap(m_pen.cap);
 

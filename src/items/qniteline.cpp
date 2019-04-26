@@ -26,7 +26,8 @@ bool QniteLine::select(QPoint p) {
   // get the distance from the first point on the path
   int dataSize = xMapped().size();
   for (int i = 0; i < dataSize; ++i) {
-    QPoint cp(xMapped().at(i), yMapped().at(i));
+    QPoint cp(static_cast<int>(xMapped().at(i)),
+              static_cast<int>(yMapped().at(i)));
     QPoint d = p - cp;
     if (d.manhattanLength() < SELECTION_TOLERANCE) {
       m_selected = true;

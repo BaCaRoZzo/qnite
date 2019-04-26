@@ -72,7 +72,7 @@ void QniteSpline::setInterpolation(Interpolation i) {
 }
 
 void QniteSpline::setTension(qreal t) {
-  if (m_tension != t) {
+  if (!qFuzzyCompare(m_tension, t)) {
     m_tension = t;
     emit tensionChanged();
     update();
@@ -80,7 +80,7 @@ void QniteSpline::setTension(qreal t) {
 }
 
 void QniteSpline::setBias(qreal b) {
-  if (m_bias != b) {
+  if (!qFuzzyCompare(m_bias, b)) {
     m_bias = b;
     emit biasChanged();
     update();
@@ -114,7 +114,7 @@ void QniteSpline::cosineInterpolation() {
 
   for (int i = 0; i < n; ++i) {
     qreal distance = xv.at(i + 1) - xv.at(i);
-    int steps = distance / res;
+    int steps = static_cast<int>(distance / res);
     qreal step = 1. / steps;
 
     for (int j = 0; j <= steps; ++j) {
@@ -153,7 +153,7 @@ void QniteSpline::cubicInterpolation() {
 
   for (int i = 1; i < n; ++i) {
     qreal distance = xv.at(i + 1) - xv.at(i);
-    int steps = distance / res;
+    int steps = static_cast<int>(distance / res);
     qreal step = 1. / steps;
 
     for (int j = 0; j <= steps; ++j) {
