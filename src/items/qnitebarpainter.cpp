@@ -45,7 +45,7 @@ void QniteBarPainter::paint(QNanoPainter *painter) {
 
   painter->setStrokeStyle(QNanoColor::fromQColor(m_pen.stroke));
   painter->setFillStyle(QNanoColor::fromQColor(m_pen.fill));
-  painter->setLineWidth(m_pen.width);
+  painter->setLineWidth(static_cast<float>(m_pen.width));
   painter->setLineJoin(m_pen.join);
   painter->setLineCap(m_pen.cap);
 
@@ -63,7 +63,7 @@ void QniteBarPainter::paint(QNanoPainter *painter) {
     // use the selectedPen
     painter->setStrokeStyle(QNanoColor::fromQColor(m_selectedPen.stroke));
     painter->setFillStyle(QNanoColor::fromQColor(m_selectedPen.fill));
-    painter->setLineWidth(m_selectedPen.width);
+    painter->setLineWidth(static_cast<float>(m_selectedPen.width));
     painter->setLineJoin(m_selectedPen.join);
     painter->setLineCap(m_selectedPen.cap);
 
@@ -75,7 +75,8 @@ void QniteBarPainter::drawBar(qreal x, qreal y) {
   auto cx = x - m_fixedWidth / 2.0;
   auto height = m_baseline - y;
   painter()->beginPath();
-  painter()->rect(cx, m_baseline, m_fixedWidth, height);
+  painter()->rect(static_cast<float>(cx), static_cast<float>(m_baseline),
+                  static_cast<float>(m_fixedWidth), static_cast<float>(height));
   painter()->fill();
   painter()->stroke();
 }

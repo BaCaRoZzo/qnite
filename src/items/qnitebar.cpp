@@ -10,9 +10,9 @@ QniteBar::QniteBar(QQuickItem *parent)
     : QniteXYArtist(parent), m_fixedWidth{10}, m_selectedIndex{-1} {}
 
 void QniteBar::setFixedWidth(qreal w) {
-  if (m_fixedWidth != w) {
+  if (!qFuzzyCompare(m_fixedWidth, w)) {
     m_fixedWidth = w;
-    emit fixedWidthChanged();
+    Q_EMIT fixedWidthChanged();
 
     update();
   }
@@ -21,7 +21,7 @@ void QniteBar::setFixedWidth(qreal w) {
 void QniteBar::setCategories(const QStringList &c) {
   if (m_categories != c) {
     m_categories = c;
-    emit categoriesChanged();
+    Q_EMIT categoriesChanged();
 
     // updated the xValues according to the category list
     auto values = QList<qreal>{};
@@ -47,7 +47,7 @@ bool QniteBar::select(QPoint p) {
     accepted = true;
   }
 
-  emit selectedChanged();
+  Q_EMIT selectedChanged();
   update();
 
   return accepted;
@@ -63,7 +63,7 @@ bool QniteBar::select(const QList<QPoint> &path) {
 
 void QniteBar::clearSelection() {
   m_selectedIndex = -1;
-  emit selectedChanged();
+  Q_EMIT selectedChanged();
   update();
 }
 

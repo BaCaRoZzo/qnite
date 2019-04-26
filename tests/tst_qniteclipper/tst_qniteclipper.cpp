@@ -12,7 +12,7 @@ class TestQniteClipper : public QObject {
   QList<qreal> m_xValues;
   QList<qreal> m_yValues;
 
-private slots:
+private Q_SLOTS:
   void initTestCase();
   void testClip();
 };

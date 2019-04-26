@@ -8,7 +8,7 @@ QniteCategoryAxis::QniteCategoryAxis(QQuickItem *parent) : QniteAxis{parent} {
 void QniteCategoryAxis::setValues(const QStringList &v) {
   if (m_values != v) {
     m_values = v;
-    emit valuesChanged();
+    Q_EMIT valuesChanged();
 
     processData();
   }
@@ -33,6 +33,6 @@ void QniteCategoryAxis::processData() {
 
   m_labels = m_values;
 
-  emit labelsChanged();
-  emit majorTicksChanged();
+  Q_EMIT labelsChanged();
+  Q_EMIT majorTicksChanged();
 }

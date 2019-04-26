@@ -7,27 +7,27 @@ QniteAxis::QniteAxis(QQuickItem *parent)
       m_flip{false}, m_position{0}, m_mapper{nullptr}, m_ticker{nullptr} {}
 
 void QniteAxis::setSize(qreal size) {
-  if (m_size != size) {
+  if (!qFuzzyCompare(m_size, size)) {
     m_size = size;
-    emit sizeChanged();
+    Q_EMIT sizeChanged();
 
     processData();
   }
 }
 
 void QniteAxis::setLowerBound(qreal bound) {
-  if (m_lowerBound != bound) {
+  if (!qFuzzyCompare(m_lowerBound, bound)) {
     m_lowerBound = bound;
-    emit lowerBoundChanged();
+    Q_EMIT lowerBoundChanged();
 
     processData();
   }
 }
 
 void QniteAxis::setUpperBound(qreal bound) {
-  if (m_upperBound != bound) {
+  if (!qFuzzyCompare(m_upperBound, bound)) {
     m_upperBound = bound;
-    emit upperBoundChanged();
+    Q_EMIT upperBoundChanged();
 
     processData();
   }
@@ -36,7 +36,7 @@ void QniteAxis::setUpperBound(qreal bound) {
 void QniteAxis::setFlip(bool flip) {
   if (m_flip != flip) {
     m_flip = flip;
-    emit flipChanged();
+    Q_EMIT flipChanged();
 
     processData();
   }
@@ -45,14 +45,14 @@ void QniteAxis::setFlip(bool flip) {
 void QniteAxis::setTicker(QniteTicker *ticker) {
   if (m_ticker != ticker) {
     m_ticker = ticker;
-    emit tickerChanged();
+    Q_EMIT tickerChanged();
   }
 }
 
 void QniteAxis::setMapper(QniteMapper *mapper) {
   if (m_mapper != mapper) {
     m_mapper = mapper;
-    emit mapperChanged();
+    Q_EMIT mapperChanged();
   }
 }
 

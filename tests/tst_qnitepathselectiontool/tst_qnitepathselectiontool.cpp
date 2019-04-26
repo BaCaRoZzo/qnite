@@ -19,6 +19,6 @@ int main(int argc, char **argv) {
   newArgv << strdup("qrc:/qml");
   newArgv << strdup("-import");
   newArgv << strdup(INSTALL_ROOT);
-  return quick_test_main(newArgv.size(), newArgv.data(), "tst_qnitepathselectiontool",
-                         QUICK_TEST_SOURCE_DIR);
+  return quick_test_main(newArgv.size(), newArgv.data(),
+                         "tst_qnitepathselectiontool", QUICK_TEST_SOURCE_DIR);
 }

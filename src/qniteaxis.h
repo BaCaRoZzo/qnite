@@ -22,7 +22,7 @@ class QniteAxis : public QniteArtist {
   Q_PROPERTY(QStringList labels READ labels NOTIFY labelsChanged)
 
 public:
-  explicit QniteAxis(QQuickItem *parent = 0);
+  explicit QniteAxis(QQuickItem *parent = Q_NULLPTR);
   virtual ~QniteAxis() {}
 
   qreal size() const { return m_size; }

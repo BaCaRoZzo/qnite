@@ -8,7 +8,7 @@ class TestQniteLinearTicker : public QObject {
   QniteLinearTicker ticker;
   QList<qreal> alist;
 
-private slots:
+private Q_SLOTS:
   void initTestCase() { alist << 105. << 343. << 443. << 543.; }
 
   void testReset() {

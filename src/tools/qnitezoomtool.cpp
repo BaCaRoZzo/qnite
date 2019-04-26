@@ -44,7 +44,7 @@ void QniteZoomTool::reset() {
 void QniteZoomTool::setMinZoomFactor(int factor) {
   if (m_minZoomFactor != factor) {
     m_minZoomFactor = factor;
-    emit minZoomFactorChanged();
+    Q_EMIT minZoomFactorChanged();
   }
 }
 

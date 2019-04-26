@@ -13,7 +13,7 @@ public Q_SLOTS:
 public:
   bool sel;
 
-  FooArtist(QQuickItem *p = 0) : QniteArtist(p), sel(false) {}
+  FooArtist(QQuickItem *p = Q_NULLPTR) : QniteArtist(p), sel(false) {}
   void clearSelection() { sel = false; }
   bool isSelected() const { return sel; }
   bool select(QPoint) {
@@ -26,7 +26,7 @@ class FooSelector : public QniteSelectionTool {
   Q_OBJECT
 
 public:
-  FooSelector(QQuickItem *parent = 0) : QniteSelectionTool(parent) {}
+  FooSelector(QQuickItem *parent = Q_NULLPTR) : QniteSelectionTool(parent) {}
   QList<QniteArtist *> getFooArtists() { return artists(); }
   void fooSelect() { select(); }
   void fooClearSelection() { clearSelection(); }
@@ -42,7 +42,7 @@ class TestQniteSelectionTool : public QObject {
   FooSelector sel;
   QniteAxes axes;
 
-private slots:
+private Q_SLOTS:
 
   void initTestCase() {
     auto p1 = axes.artists();

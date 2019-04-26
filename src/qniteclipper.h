@@ -6,7 +6,7 @@
 class QniteClipper : public QObject {
   Q_OBJECT
 public:
-  explicit QniteClipper(QObject *parent = 0);
+  explicit QniteClipper(QObject *parent = Q_NULLPTR);
   virtual ~QniteClipper();
 
   virtual void clip(const QList<qreal> &xValues, const QList<qreal> &yValues,

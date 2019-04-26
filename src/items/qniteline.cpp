@@ -26,13 +26,14 @@ bool QniteLine::select(QPoint p) {
   // get the distance from the first point on the path
   int dataSize = xMapped().size();
   for (int i = 0; i < dataSize; ++i) {
-    QPoint cp(xMapped().at(i), yMapped().at(i));
+    QPoint cp(static_cast<int>(xMapped().at(i)),
+              static_cast<int>(yMapped().at(i)));
     QPoint d = p - cp;
     if (d.manhattanLength() < SELECTION_TOLERANCE) {
       m_selected = true;
       accepted = true;
       axes()->setOnTop(this);
-      emit selectedChanged();
+      Q_EMIT selectedChanged();
       update();
       break;
     }
@@ -51,14 +52,14 @@ bool QniteLine::select(const QList<QPoint> &path) {
 
 void QniteLine::clearSelection() {
   m_selected = false;
-  emit selectedChanged();
+  Q_EMIT selectedChanged();
   update();
 }
 
 void QniteLine::setDrawSymbols(bool drawSymbols) {
   if (this->m_drawSymbols != drawSymbols) {
     this->m_drawSymbols = drawSymbols;
-    emit drawSymbolsChanged();
+    Q_EMIT drawSymbolsChanged();
     update();
   }
 }
@@ -66,7 +67,7 @@ void QniteLine::setDrawSymbols(bool drawSymbols) {
 void QniteLine::setDrawStepped(bool drawStepped) {
   if (this->m_drawStepped != drawStepped) {
     this->m_drawStepped = drawStepped;
-    emit drawSteppedChanged();
+    Q_EMIT drawSteppedChanged();
     update();
   }
 }

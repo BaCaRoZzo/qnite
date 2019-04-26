@@ -23,7 +23,7 @@ void QniteTicker::setValues(const QList<qreal> &values) {
   if (m_values != values) {
 
     m_values = values;
-    emit valuesChanged();
+    Q_EMIT valuesChanged();
 
     // compute min and max bounds
     std::sort(m_values.begin(), m_values.end(), std::less<qreal>());
@@ -36,7 +36,7 @@ QList<qreal> QniteTicker::minorTicks() const { return m_minorTicks; }
 void QniteTicker::setMinorTicks(const QList<qreal> &ticks) {
   if (m_minorTicks != ticks) {
     m_minorTicks = ticks;
-    emit minorTicksChanged();
+    Q_EMIT minorTicksChanged();
   }
 }
 
@@ -45,14 +45,14 @@ const QList<qreal> &QniteTicker::majorTicks() const { return m_majorTicks; }
 void QniteTicker::setMajorTicks(const QList<qreal> &ticks) {
   if (m_majorTicks != ticks) {
     m_majorTicks = ticks;
-    emit majorTicksChanged();
+    Q_EMIT majorTicksChanged();
   }
 }
 
 void QniteTicker::setNumSteps(int steps) {
   if (m_numSteps != steps) {
     m_numSteps = steps;
-    emit numStepsChanged();
+    Q_EMIT numStepsChanged();
 
     // ticks need to be rebuilt
     doBuildTicks();
@@ -62,18 +62,18 @@ void QniteTicker::setNumSteps(int steps) {
 void QniteTicker::setBoundaries(qreal lower, qreal upper) {
   bool modified = false;
 
-  if (m_lowerBound != lower) {
+  if (!qFuzzyCompare(m_lowerBound, lower)) {
     m_lowerBound = lower;
     modified = true;
   }
 
-  if (m_upperBound != upper) {
+  if (!qFuzzyCompare(m_upperBound, upper)) {
     m_upperBound = upper;
     modified = true;
   }
 
   if (modified) {
-    emit boundariesChanged();
+    Q_EMIT boundariesChanged();
 
     // ticks need to be rebuilt
     doBuildTicks();
@@ -97,5 +97,5 @@ QList<qreal> QniteTicker::boundaries() const {
 
 void QniteTicker::doBuildTicks() {
   buildTicks();
-  emit tickersBuilt();
+  Q_EMIT tickersBuilt();
 }

@@ -12,8 +12,8 @@ class QnitePathSelectionTool : public QniteSelectionTool {
   Q_PROPERTY(QnitePen *pen READ pen CONSTANT)
 
 public:
-  explicit QnitePathSelectionTool(QQuickItem *parent = 0);
-  virtual ~QnitePathSelectionTool() {}
+  explicit QnitePathSelectionTool(QQuickItem *parent = Q_NULLPTR);
+  virtual ~QnitePathSelectionTool() Q_DECL_OVERRIDE {}
 
   QVariantList selectionPath() const;
 
@@ -29,10 +29,10 @@ Q_SIGNALS:
   void selectionPathChanged();
 
 protected:
-  virtual void mousePressEvent(QMouseEvent *event);
-  virtual void mouseMoveEvent(QMouseEvent *event);
-  virtual void mouseReleaseEvent(QMouseEvent *event);
-  virtual bool doSelect(QniteArtist *);
+  virtual void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
+  virtual void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
+  virtual void mouseReleaseEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
+  virtual bool doSelect(QniteArtist *) Q_DECL_OVERRIDE;
 
   //  QSGNode *updatePaintNode(QSGNode *, UpdatePaintNodeData *);
 

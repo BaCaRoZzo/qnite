@@ -16,7 +16,7 @@ class TestQniteMapper : public QObject {
 
   QniteMapper *mapper;
 
-private slots:
+private Q_SLOTS:
   void testMapTo();
 };
 

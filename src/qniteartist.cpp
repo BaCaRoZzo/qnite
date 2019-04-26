@@ -24,17 +24,17 @@ QniteAxes *QniteArtist::axes() const { return m_axes; }
 void QniteArtist::setAxes(QniteAxes *axes) {
   if (m_axes != axes) {
     m_axes = axes;
-    emit axesChanged();
+    Q_EMIT axesChanged();
 
     updateAxes();
   }
 }
 
 void QniteArtist::updateAxes() {
-  disconnect(m_axes, SIGNAL(widthChanged()), this, 0);
-  disconnect(m_axes, SIGNAL(heightChanged()), this, 0);
-  disconnect(m_axes, &QniteAxes::xBoundsChanged, this, 0);
-  disconnect(m_axes, &QniteAxes::yBoundsChanged, this, 0);
+  disconnect(m_axes, SIGNAL(widthChanged()), this, nullptr);
+  disconnect(m_axes, SIGNAL(heightChanged()), this, nullptr);
+  disconnect(m_axes, &QniteAxes::xBoundsChanged, this, nullptr);
+  disconnect(m_axes, &QniteAxes::yBoundsChanged, this, nullptr);
 
   if (m_axes != nullptr) {
     setWidth(m_axes->width());
@@ -57,7 +57,7 @@ void QniteArtist::setSelectable(bool selectable) {
     }
 
     m_selectable = selectable;
-    emit selectableChanged();
+    Q_EMIT selectableChanged();
   }
 }
 
@@ -87,6 +87,6 @@ void QniteArtist::setPropagateSelection(bool propagate) {
   if (m_propagate_selection != propagate) {
     m_propagate_selection = propagate;
 
-    emit propagateSelectionChanged();
+    Q_EMIT propagateSelectionChanged();
   }
 }

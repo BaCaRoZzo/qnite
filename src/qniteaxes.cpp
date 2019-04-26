@@ -49,20 +49,21 @@ void QniteAxes::setXBounds(const QList<qreal> &bounds) {
   auto lowerBound = bounds.at(0);
   auto upperBound = bounds.at(1);
 
-  if (lowerBound != m_lowerXBound || upperBound != m_upperXBound) {
+  if (!qFuzzyCompare(lowerBound, m_lowerXBound) ||
+      !qFuzzyCompare(upperBound, m_upperXBound)) {
     m_lowerXBound = lowerBound;
     m_upperXBound = upperBound;
-    emit xBoundsChanged();
+    Q_EMIT xBoundsChanged();
 
     initAxisX();
   }
 }
 
 void QniteAxes::setXPadding(qreal padding) {
-  if (m_xPadding != padding) {
+  if (!qFuzzyCompare(m_xPadding, padding)) {
     m_xPadding = padding;
 
-    emit xPaddingChanged();
+    Q_EMIT xPaddingChanged();
 
     initAxisX();
   }
@@ -80,20 +81,21 @@ void QniteAxes::setYBounds(const QList<qreal> &bounds) {
   auto lowerBound = bounds.at(0);
   auto upperBound = bounds.at(1);
 
-  if (lowerBound != m_lowerYBound || upperBound != m_upperYBound) {
+  if (!qFuzzyCompare(lowerBound, m_lowerYBound) ||
+      !qFuzzyCompare(upperBound, m_upperYBound)) {
     m_lowerYBound = lowerBound;
     m_upperYBound = upperBound;
-    emit yBoundsChanged();
+    Q_EMIT yBoundsChanged();
 
     initAxisY();
   }
 }
 
 void QniteAxes::setYPadding(qreal padding) {
-  if (m_yPadding != padding) {
+  if (!qFuzzyCompare(m_yPadding, padding)) {
     m_yPadding = padding;
 
-    emit yPaddingChanged();
+    Q_EMIT yPaddingChanged();
 
     initAxisY();
   }
@@ -105,7 +107,7 @@ void QniteAxes::setAxisY(QniteAxis *axisY) {
   if (m_axisY != axisY) {
     m_axisY = axisY;
     m_axisY->setParentItem(this);
-    emit axisYChanged();
+    Q_EMIT axisYChanged();
 
     initAxisY();
   }
@@ -117,7 +119,7 @@ void QniteAxes::setAxisX(QniteAxis *axisX) {
   if (m_axisX != axisX) {
     m_axisX = axisX;
     m_axisX->setParentItem(this);
-    emit axisXChanged();
+    Q_EMIT axisXChanged();
 
     initAxisX();
   }

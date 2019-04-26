@@ -13,7 +13,7 @@ class QniteLine : public QniteXYArtist {
                  drawSteppedChanged)
 
 public:
-  explicit QniteLine(QQuickItem *parent = 0);
+  explicit QniteLine(QQuickItem *parent = Q_NULLPTR);
 
   bool select(const QList<QPoint> &) Q_DECL_OVERRIDE;
   bool select(const QPoint) Q_DECL_OVERRIDE;
@@ -26,7 +26,7 @@ public:
 
   QNanoQuickItemPainter *createItemPainter() const Q_DECL_OVERRIDE;
 
-signals:
+Q_SIGNALS:
   void drawSymbolsChanged();
   void drawSteppedChanged();
 

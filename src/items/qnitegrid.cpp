@@ -21,7 +21,7 @@ QNanoQuickItemPainter *QniteGrid::createItemPainter() const {
 void QniteGrid::setDrawXAxes(bool value) {
   if (m_drawXAxes != value) {
     m_drawXAxes = value;
-    emit drawXAxesChanged();
+    Q_EMIT drawXAxesChanged();
   }
 }
 
@@ -30,6 +30,6 @@ void QniteGrid::setDrawXAxes(bool value) {
 void QniteGrid::setDrawYAxes(bool value) {
   if (m_drawYAxes != value) {
     m_drawYAxes = value;
-    emit drawYAxesChanged();
+    Q_EMIT drawYAxesChanged();
   }
 }

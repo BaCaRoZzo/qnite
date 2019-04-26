@@ -41,7 +41,8 @@ bool QniteCircle::select(const QList<QPoint> &path) {
   m_selectedPoints.clear();
   auto dataSize = xMapped().size();
   for (auto i = 0; i < dataSize; ++i) {
-    QPoint cp(xMapped().at(i), yMapped().at(i));
+    QPoint cp(static_cast<int>(xMapped().at(i)),
+              static_cast<int>(yMapped().at(i)));
 
     if (polygonPath.containsPoint(cp, Qt::OddEvenFill)) {
       m_selectedPoints.insert(i);
@@ -53,7 +54,7 @@ bool QniteCircle::select(const QList<QPoint> &path) {
     return false;
   }
 
-  emit selectedChanged();
+  Q_EMIT selectedChanged();
   update();
   return true;
 }
@@ -68,7 +69,8 @@ bool QniteCircle::select(const QPoint p) {
 
   auto dataSize = xMapped().size();
   for (auto i = 0; i < dataSize; ++i) {
-    QPoint cp(xMapped().at(i), yMapped().at(i));
+    QPoint cp(static_cast<int>(xMapped().at(i)),
+              static_cast<int>(yMapped().at(i)));
     QPoint d = p - cp;
 
     auto distance = d.manhattanLength();
@@ -81,7 +83,7 @@ bool QniteCircle::select(const QPoint p) {
   // add the index to the selected points pool
   if (nearestIndex >= 0) {
     m_selectedPoints.insert(nearestIndex);
-    emit selectedChanged();
+    Q_EMIT selectedChanged();
     update();
     return true;
   }
@@ -92,7 +94,7 @@ bool QniteCircle::select(const QPoint p) {
 void QniteCircle::clearSelection() {
   m_selectedPoints.clear();
   m_highlightedPoint = -1;
-  emit selectedChanged();
+  Q_EMIT selectedChanged();
   update();
 }
 
@@ -106,7 +108,7 @@ void QniteCircle::select(QList<int> indexes) {
       m_selectedPoints.insert(i);
     }
   }
-  // TODO: should emit selectedChanged???
+  // TODO: should Q_EMIT selectedChanged???
   update();
 }
 

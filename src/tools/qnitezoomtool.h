@@ -23,7 +23,7 @@ public:
 
   Q_INVOKABLE void reset();
 
-signals:
+Q_SIGNALS:
   void minZoomFactorChanged() const;
   void limitZoomChanged() const;
 
@@ -32,7 +32,7 @@ protected:
   virtual void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
   virtual void mouseReleaseEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
 
-private slots:
+private Q_SLOTS:
   void connectAxesBoundsSignals() const;
   void updateBaseZoomRectXBounds();
   void updateBaseZoomRectYBounds();

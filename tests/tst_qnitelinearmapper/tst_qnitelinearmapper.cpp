@@ -7,7 +7,7 @@ class TestQniteLinearMapper : public QObject {
 
   QniteLinearMapper mapper;
 
-private slots:
+private Q_SLOTS:
   void testMapTo_data();
   void testMapTo();
   void testMapToMulti();

@@ -12,7 +12,7 @@ class QniteSpline : public QniteLine {
   Q_PROPERTY(qreal bias READ bias WRITE setBias NOTIFY biasChanged)
 
 public:
-  explicit QniteSpline(QQuickItem *parent = 0);
+  explicit QniteSpline(QQuickItem *parent = Q_NULLPTR);
 
   enum Interpolation { Cosine, Cubic, CatmullRom, Hermite };
   Interpolation interpolation() const { return m_interpolation; }

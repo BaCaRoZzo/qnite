@@ -7,7 +7,7 @@ class QniteLinearTicker : public QniteTicker {
   Q_OBJECT
 
 public:
-  explicit QniteLinearTicker(QObject *parent = 0);
+  explicit QniteLinearTicker(QObject *parent = Q_NULLPTR);
   virtual ~QniteLinearTicker() {}
 
   virtual void reset();

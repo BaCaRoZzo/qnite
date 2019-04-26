@@ -9,8 +9,8 @@ class QniteCircle : public QniteXYArtist {
   Q_PROPERTY(int highlightedIndex READ highlightedIndex)
 
 public:
-  explicit QniteCircle(QQuickItem *parent = 0);
-  virtual ~QniteCircle();
+  explicit QniteCircle(QQuickItem *parent = Q_NULLPTR);
+  virtual ~QniteCircle() Q_DECL_OVERRIDE;
 
   QList<int> selectedIndexes() const { return m_selectedPoints.toList(); }
   int highlightedIndex() const { return m_highlightedPoint; }

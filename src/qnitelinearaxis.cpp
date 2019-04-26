@@ -41,7 +41,7 @@ void QniteLinearAxis::processData() {
         m_mapper->mapTo(m_lowerBound, m_upperBound, 0., m_size, 0., m_flip);
   }
 
-  emit labelsChanged();
-  emit majorTicksChanged();
-  emit minorTicksChanged();
+  Q_EMIT labelsChanged();
+  Q_EMIT majorTicksChanged();
+  Q_EMIT minorTicksChanged();
 }

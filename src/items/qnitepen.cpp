@@ -9,47 +9,47 @@ QnitePen::QnitePen(QObject *parent) : QObject{parent} {}
 void QnitePen::setStroke(QColor stroke) {
   if (m_data.stroke != stroke) {
     m_data.stroke = stroke;
-    emit strokeChanged();
-    emit penChanged();
+    Q_EMIT strokeChanged();
+    Q_EMIT penChanged();
   }
 }
 
 void QnitePen::setFill(QColor fill) {
   if (m_data.fill != fill) {
     m_data.fill = fill;
-    emit fillChanged();
-    emit penChanged();
+    Q_EMIT fillChanged();
+    Q_EMIT penChanged();
   }
 }
 
 void QnitePen::setWidth(qreal width) {
-  if (m_data.width != width) {
+  if (qFuzzyCompare(m_data.width, width)) {
     m_data.width = width;
-    emit widthChanged();
-    emit penChanged();
+    Q_EMIT widthChanged();
+    Q_EMIT penChanged();
   }
 }
 
 void QnitePen::setJoin(LineJoin join) {
   if (m_data.join != join) {
     m_data.join = join;
-    emit joinChanged();
-    emit penChanged();
+    Q_EMIT joinChanged();
+    Q_EMIT penChanged();
   }
 }
 
 void QnitePen::setCap(LineCap cap) {
   if (m_data.cap != cap) {
     m_data.cap = cap;
-    emit capChanged();
-    emit penChanged();
+    Q_EMIT capChanged();
+    Q_EMIT penChanged();
   }
 }
 
 void QnitePen::setRadius(qreal radius) {
-  if (m_data.radius != radius) {
+  if (qFuzzyCompare(m_data.radius, radius)) {
     m_data.radius = radius;
-    emit radiusChanged();
-    emit penChanged();
+    Q_EMIT radiusChanged();
+    Q_EMIT penChanged();
   }
 }

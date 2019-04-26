@@ -7,7 +7,7 @@ class FooTicker : public QniteTicker {
   Q_OBJECT
 
 public:
-  FooTicker(QObject *p = 0) : QniteTicker(p) {}
+  FooTicker(QObject *p = Q_NULLPTR) : QniteTicker(p) {}
   void buildTicks() {
     QList<qreal> t;
     for (int i = 0; i < numSteps(); ++i) {
@@ -26,7 +26,7 @@ class TestQniteTicker : public QObject {
   QList<qreal> anotherlist;
   QList<qreal> anotherlistagain;
 
-private slots:
+private Q_SLOTS:
   void initTestCase() {
     alist << 1. << 2. << 3. << 4.;
     anotherlist << -1. << 1.1 << 1.2;

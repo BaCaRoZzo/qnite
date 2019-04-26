@@ -11,7 +11,7 @@ public Q_SLOTS:
 public:
   bool sel;
 
-  FooArtist(QQuickItem *p = 0) : QniteArtist(p), sel(false) {}
+  FooArtist(QQuickItem *p = Q_NULLPTR) : QniteArtist(p), sel(false) {}
   void clearSelection() { sel = false; }
   bool isSelected() const { return sel; }
 };
@@ -21,7 +21,7 @@ class TestQniteArtist : public QObject {
 
   FooArtist artist;
 
-private slots:
+private Q_SLOTS:
   void initTestCase() {}
 
   void cleanupTestCase() {}

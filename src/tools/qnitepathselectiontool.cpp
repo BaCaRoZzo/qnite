@@ -26,20 +26,20 @@ void QnitePathSelectionTool::begin(const QPoint &point) {
   clearSelection(); // TODO: this is a "select exclusive" behaviour, should not
                     // be hardcoded
   select();
-  emit selectionPathChanged();
+  Q_EMIT selectionPathChanged();
   update();
 }
 
 void QnitePathSelectionTool::append(const QPoint &point) {
   m_selection << point;
   select();
-  emit selectionPathChanged();
+  Q_EMIT selectionPathChanged();
   update();
 }
 
 void QnitePathSelectionTool::end() {
   m_selection.clear();
-  emit selectionPathChanged();
+  Q_EMIT selectionPathChanged();
   update();
 }
 

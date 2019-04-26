@@ -11,21 +11,21 @@ public Q_SLOTS:
   void processData() {}
 
 public:
-  FooArtist(QQuickItem *p = 0) : QniteArtist(p) {}
+  FooArtist(QQuickItem *p = Q_NULLPTR) : QniteArtist(p) {}
 };
 
 class FooTool : public QniteTool {
   Q_OBJECT
 
 public:
-  FooTool(QQuickItem *parent = 0) : QniteTool(parent) {}
+  FooTool(QQuickItem *parent = Q_NULLPTR) : QniteTool(parent) {}
   QList<QniteArtist *> getFooArtists() { return artists(); }
 };
 
 class TestQniteTool : public QObject {
   Q_OBJECT
 
-private slots:
+private Q_SLOTS:
 
   void testInstance() {
     FooTool f;
