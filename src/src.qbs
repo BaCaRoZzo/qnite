@@ -12,6 +12,8 @@ StaticLibrary {
 
     files: [
         "qniteartist.cpp",
+        "qnitetimelineaxis.cpp",
+        "qnitetimelineaxis.h",
         "qnitexyartist.cpp",
         "qniteaxis.cpp",
         "qnitelinearaxis.cpp",
