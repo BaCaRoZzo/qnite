@@ -6,7 +6,7 @@ class FooMapper : public QniteMapper {
   Q_OBJECT
 
 public:
-  FooMapper(QObject *parent = 0) : QniteMapper(parent) {}
+  FooMapper(QObject *parent = Q_NULLPTR) : QniteMapper(parent) {}
 
   qreal mapTo(qreal, qreal, qreal, qreal, qreal, bool) { return 1; }
 };
