@@ -18,6 +18,7 @@
 #include "qnitepointselectiontool.h"
 #include "qnitespline.h"
 #include "qniteticker.h"
+#include "qnitetimelineaxis.h"
 #include "qnitetool.h"
 #include "qnitexyartist.h"
 #include "qnitezoomtool.h"
@@ -35,6 +36,7 @@ static void registerQniteQmlTypes() {
       uri, 1, 0, "Axis", "Cannot create obects of base type Axis");
   qmlRegisterType<QniteLinearAxis>(uri, 1, 0, "LinearAxis");
   qmlRegisterType<QniteCategoryAxis>(uri, 1, 0, "CategoryAxis");
+  qmlRegisterType<QniteTimelineAxis>(uri, 1, 0, "TimelineAxis");
   qmlRegisterType<QniteAxisTick>(uri, 1, 0, "AxisTick");
   qmlRegisterUncreatableType<QnitePen>(uri, 1, 0, "Pen",
                                        "Cannot create obects of type Pen");
