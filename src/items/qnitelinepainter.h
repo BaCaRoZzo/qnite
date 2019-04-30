@@ -11,7 +11,7 @@ public:
   void synchronize(QNanoQuickItem *item) Q_DECL_OVERRIDE;
   void paint(QNanoPainter *painter) Q_DECL_OVERRIDE;
 
-private:
+protected:
   // base artist data
   bool m_selected;
   QnitePen::PenData m_pen;

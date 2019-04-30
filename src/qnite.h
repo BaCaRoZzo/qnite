@@ -17,6 +17,7 @@
 #include "qnitepen.h"
 #include "qnitepointselectiontool.h"
 #include "qnitespline.h"
+#include "qnitestrip.h"
 #include "qniteticker.h"
 #include "qnitetimelineaxis.h"
 #include "qnitetool.h"
@@ -44,6 +45,7 @@ static void registerQniteQmlTypes() {
   qmlRegisterType<QniteCircle>(uri, 1, 0, "Circle");
   qmlRegisterType<QniteLine>(uri, 1, 0, "Line");
   qmlRegisterType<QniteSpline>(uri, 1, 0, "Spline");
+  qmlRegisterType<QniteStrip>(uri, 1, 0, "Strip");
   qmlRegisterType<QniteGrid>(uri, 1, 0, "Grid");
 
   qmlRegisterUncreatableType<QniteTool>(
