@@ -38,10 +38,14 @@ void QniteTimelineAxis::processData() {
     clipper.clip(m_ticker->minorTicks(), m_lowerBound, m_upperBound, min);
 
     // map to display
-    m_majorTicks =
-        m_mapper->mapTo(m_lowerBound, m_upperBound, 0, m_size, maj, m_flip);
-    m_minorTicks =
-        m_mapper->mapTo(m_lowerBound, m_upperBound, 0, m_size, min, m_flip);
+    for (auto v : maj) {
+      m_majorTicks << m_mapper->mapTo(m_lowerBound, m_upperBound, 0, m_size, v,
+                                      m_flip);
+    }
+    for (auto v : min) {
+      m_minorTicks << m_mapper->mapTo(m_lowerBound, m_upperBound, 0, m_size, v,
+                                      m_flip);
+    }
 
     for (auto i = 0; i < maj.size(); ++i) {
       m_labels.push_back(QDateTime::fromMSecsSinceEpoch(int(maj.at(i)))
