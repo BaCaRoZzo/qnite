@@ -5,7 +5,7 @@ CONFIG += c++14
 include( ../../qnite.prf )
 
 SOURCES += main.cpp
-RESOURCES += line.qrc
+RESOURCES += strip.qrc
 
-TARGET = line
+TARGET = strip
 TEMPLATE = app

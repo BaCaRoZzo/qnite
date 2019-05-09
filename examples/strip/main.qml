@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import QtQuick.Controls 2.3
+import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.3
 
 import Qnite 1.0
@@ -11,10 +11,12 @@ ApplicationWindow {
 
     readonly property int dataSourcePonishingSet: 100
     readonly property int autoupdateInterval: 100
-    readonly property int currentTime: new Date() - new Date().setHours(0,0,0,0)
     readonly property int dataSourceGenerationInterval: 2000
     readonly property int shownInterval: 10000 // 10 seconds
     readonly property int valuesAtScreen: (shownInterval / dataSourceGenerationInterval) + 1 //(off-screen reference point)
+    readonly property real currentTime: new Date().getTime()
+
+
     ColumnLayout {
         anchors.fill: parent
 
@@ -86,7 +88,7 @@ ApplicationWindow {
         triggeredOnStart: true
 
         onTriggered: {
-            var xValue = new Date() - new Date().setHours(0,0,0,0)
+            var xValue = new Date().getTime()
 
             line.xValues.push(xValue)
             line.yValues.push(Math.random() * 0.5)
