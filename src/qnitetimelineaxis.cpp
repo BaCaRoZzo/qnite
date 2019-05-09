@@ -48,7 +48,7 @@ void QniteTimelineAxis::processData() {
     }
 
     for (auto i = 0; i < maj.size(); ++i) {
-      m_labels.push_back(QDateTime::fromMSecsSinceEpoch(int(maj.at(i)))
+      m_labels.push_back(QDateTime::fromMSecsSinceEpoch(qint64(maj.at(i)))
                              .toString(m_formatString));
     }
 
