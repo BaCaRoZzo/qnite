@@ -23,7 +23,7 @@ void QnitePen::setFill(QColor fill) {
 }
 
 void QnitePen::setWidth(qreal width) {
-  if (qFuzzyCompare(m_data.width, width)) {
+  if (!qFuzzyCompare(m_data.width, width)) {
     m_data.width = width;
     Q_EMIT widthChanged();
     Q_EMIT penChanged();
@@ -47,7 +47,7 @@ void QnitePen::setCap(LineCap cap) {
 }
 
 void QnitePen::setRadius(qreal radius) {
-  if (qFuzzyCompare(m_data.radius, radius)) {
+  if (!qFuzzyCompare(m_data.radius, radius)) {
     m_data.radius = radius;
     Q_EMIT radiusChanged();
     Q_EMIT penChanged();
