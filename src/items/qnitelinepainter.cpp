@@ -95,10 +95,10 @@ void QniteLinePainter::paint(QNanoPainter *painter) {
       symbolColor.setAlphaF(1.0);
       painter->setFillStyle(QNanoColor::fromQColor(symbolColor));
     }
-    dataSize = m_mappedXs.size();
-    for (auto i = 0; i < dataSize; ++i) {
+    auto ids = m_mappedXs.keys();
+    for (auto id : ids) {
       painter->beginPath();
-      painter->circle(float(m_mappedXs.at(i)), float(m_mappedYs.at(i)),
+      painter->circle(float(m_mappedXs.value(id)), float(m_mappedYs.value(id)),
                       float(pen.width * 2.5));
       painter->fill();
       painter->stroke();

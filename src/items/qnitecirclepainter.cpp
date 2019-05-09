@@ -16,8 +16,8 @@ void QniteCirclePainter::synchronize(QNanoQuickItem *item) {
 
     // TODO: here we could share painting data using a class
     // which is copied with all its members in a local instance.
-    m_xs = circleItem->xProcessed();
-    m_ys = circleItem->yProcessed();
+    m_xs = circleItem->xMapped();
+    m_ys = circleItem->yMapped();
 
     // make a local copy of the pen
     m_pen = circleItem->pen()->data();
@@ -26,17 +26,17 @@ void QniteCirclePainter::synchronize(QNanoQuickItem *item) {
     m_selected = circleItem->selected();
 
     // circle specific properties
-    m_selectedPoints = circleItem->selectedIndexes();
-    m_highlightedPoint = circleItem->highlightedIndex();
+    m_selectedIds = circleItem->selectedIds();
+    m_highlightedId = circleItem->highlightedId();
   }
 }
 
 void QniteCirclePainter::paint(QNanoPainter *painter) {
   qCDebug(qnitecirclepainter) << "painting qnitecircle";
 
-  auto dataSize = m_xs.size();
-  if (dataSize < 1)
+  if (m_xs.size() < 1) {
     return;
+  }
 
   painter->setStrokeStyle(QNanoColor::fromQColor(m_pen.stroke));
   painter->setFillStyle(QNanoColor::fromQColor(m_pen.fill));
@@ -45,44 +45,45 @@ void QniteCirclePainter::paint(QNanoPainter *painter) {
   painter->setLineCap(m_pen.cap);
 
   // draw unselected points
-  for (auto i = 0; i < dataSize; ++i) {
-    // we do not draw selected or highlighted indexes because we draw them later
-    if (m_selectedPoints.contains(i) || m_highlightedPoint == i) {
+  auto ids = m_xs.keys();
+  for (auto id : ids) {
+    // we do not draw selected or highlighted ids because we draw them later
+    if (m_selectedIds.contains(id) || m_highlightedId == id) {
       continue;
     }
     painter->beginPath();
-    painter->circle(static_cast<float>(m_xs.at(i)),
-                    static_cast<float>(m_ys.at(i)),
+    painter->circle(static_cast<float>(m_xs.value(id)),
+                    static_cast<float>(m_ys.value(id)),
                     static_cast<float>(m_pen.radius));
     painter->fill();
     painter->stroke();
   }
 
   // draw selected points
-  if (m_selectedPoints.size() > 0) {
+  if (m_selectedIds.size() > 0) {
     painter->setStrokeStyle(QNanoColor::fromQColor(m_selectedPen.stroke));
     painter->setFillStyle(QNanoColor::fromQColor(m_selectedPen.fill));
     painter->setLineWidth(static_cast<float>(m_selectedPen.width));
     painter->setLineJoin(m_selectedPen.join);
     painter->setLineCap(m_selectedPen.cap);
 
-    for (auto i : m_selectedPoints) {
-      // we don't draw highlighted indexes here
-      if (i == m_highlightedPoint) {
+    for (auto id : m_selectedIds) {
+      // we don't draw highlighted ids here, nor those currently not visible
+      if (id == m_highlightedId || !ids.contains(id)) {
         continue;
       }
 
       painter->beginPath();
-      painter->circle(static_cast<float>(m_xs.at(i)),
-                      static_cast<float>(m_ys.at(i)),
+      painter->circle(static_cast<float>(m_xs.value(id)),
+                      static_cast<float>(m_ys.value(id)),
                       static_cast<float>(m_selectedPen.radius));
       painter->fill();
       painter->stroke();
     }
   }
 
-  // draw highlighted points
-  if (m_highlightedPoint > -1) {
+  // draw highlighted point if visible
+  if (m_highlightedId > -1 && ids.contains(m_highlightedId)) {
     painter->setStrokeStyle(QNanoColor::fromQColor(m_highlightedPen.stroke));
     painter->setFillStyle(QNanoColor::fromQColor(m_highlightedPen.fill));
     painter->setLineWidth(static_cast<float>(m_highlightedPen.width));
@@ -90,8 +91,8 @@ void QniteCirclePainter::paint(QNanoPainter *painter) {
     painter->setLineCap(m_highlightedPen.cap);
 
     painter->beginPath();
-    painter->circle(static_cast<float>(m_xs.at(m_highlightedPoint)),
-                    static_cast<float>(m_ys.at(m_highlightedPoint)),
+    painter->circle(static_cast<float>(m_xs.value(m_highlightedId)),
+                    static_cast<float>(m_ys.value(m_highlightedId)),
                     static_cast<float>(m_highlightedPen.radius));
     painter->fill();
     painter->stroke();
